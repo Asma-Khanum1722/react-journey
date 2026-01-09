@@ -1,4 +1,4 @@
-# React Learning Journey ⚛️
+# React Learning Journey
 
 Welcome to my advanced web development portfolio! This repository documents my journey mastering modern frontend frameworks and tools. It contains full-stack applications, UI experiments, and animation studies.
 
