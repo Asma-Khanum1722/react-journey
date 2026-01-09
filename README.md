@@ -1,6 +1,6 @@
 # React Learning Journey
 
-Welcome to my advanced web development portfolio! This repository documents my journey mastering modern frontend frameworks and tools. It contains full-stack applications, UI experiments, and animation studies.
+Welcome to my advanced web development portfolio! This repository documents my journey mastering modern frontend frameworks and tools. It contains applications, UI experiments, and animation studies.
 
 ## 🛠️ Tech Stack
 * **Core:** React.js (Vite), JavaScript (ES6+)
