@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM-STATE</title>
+</head>
+<body>
+    <div class="js-container"></div>
+
+    <!-- react and react-dom -->
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+
+    <!-- babel -->
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    <script type="text/babel">
+
+        function App(){
+            const [inputText, setInputText] = React.useState('')
+           
+            function handleInput(event){
+                setInputText(event.target.value)
+            }
+
+            function sendMessage(){
+                 console.log(inputText);
+            }
+            
+            return(
+                <>
+                    <h1>Input Field DOM manipulation</h1>
+                    <input onChange = {handleInput} type="text" placeholder="Type something.." size="40"/>
+                    <button onClick={sendMessage}>Send</button>
+                </>
+            );
+        }
+
+        const container = document.querySelector('.js-container')
+
+        ReactDOM.createRoot(container).render(<App/>)
+    </script>
+</body>
+</html>

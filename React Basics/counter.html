@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Counter</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
+            color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .app-container {
+            background: #1c1c1c;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.7);
+            text-align: center;
+            width: 320px;
+            border: 1px solid #2c2c2c;
+        }
+
+        h1 {
+            margin-bottom: 25px;
+            font-size: 26px;
+            font-weight: 600;
+            color: #f0f0f0;
+        }
+
+        .counter-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .counter-btn {
+            background: #007bff;
+            color: #fff;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .counter-btn:hover {
+            background: #1c1c1c;
+            transform: translateY(-2px);
+            border: 2px solid #007bff;
+        }
+
+        .counter-value {
+            font-size: 32px;
+            font-weight: 700;
+            color: #fff;
+            min-width: 50px;
+            text-align: center;
+        }
+
+        .counter-reset-btn {
+            padding: 10px 15px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="js-container"></div>
+
+    <!-- React + ReactDOM -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+    <!-- Babel -->
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+
+    <script type="text/babel">
+        function Counter() {
+            const [count, setCount] = React.useState(0);
+
+            // React.useEffect(()=>{
+            //    const savedCount = localStorage.getItem("count");
+            //    if(savedCount){
+            //     setCount(Number(savedCount))
+            //    }
+            // },[])
+
+            // React.useEffect(()=>{
+            //     localStorage.setItem("count", count);
+            // },[count])
+
+            return (
+                <div className="app-container">
+                    <h1>Counter</h1>
+                    <div className="counter-container">
+                        <button
+                            className="counter-btn"
+                            onClick={() => setCount(Math.max(0, count - 1))}
+                        >
+                            -1
+                        </button>
+                        <span className="counter-value">{count}</span>
+                        <button
+                            className="counter-btn"
+                            onClick={() => setCount(count + 1)}
+                        >
+                            +1
+                        </button>
+                    </div>
+                    <button
+                        className="counter-btn counter-reset-btn"
+                        onClick={() => {
+                            setCount(0)
+                        }}
+                    >
+                        Reset
+                    </button>
+                </div>
+            );
+        }
+
+        function App() {
+            return <Counter />;
+        }
+
+        const container = document.querySelector(".js-container");
+        ReactDOM.createRoot(container).render(<App />);
+    </script>
+</body>
+
+</html>

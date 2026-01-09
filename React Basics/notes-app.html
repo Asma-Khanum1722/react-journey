@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes App</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .js-container {
+            width: 500px;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .notes-container div {
+            background: #e7f3ff;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            position: relative;
+        }
+
+        .notes-container span {
+            display: block;
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+
+        .notes-container p {
+            font-size: 12px;
+            color: #555;
+            margin: 0 0 5px 0;
+        }
+
+        textarea {
+            width: 480px;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            resize: none;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .notes-container>div>textarea {
+            width: 460px;
+        }
+
+        button {
+            margin-right: 5px;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        button:hover {
+            opacity: 0.8;
+        }
+
+        button:active {
+            transform: scale(0.95);
+        }
+
+        .delete-btn {
+            background: #ff6b6b;
+            color: white;
+        }
+
+        .edit-btn {
+            background: #4da6ff;
+            color: white;
+        }
+
+        .save-btn {
+            background: #2ecc71;
+            color: white;
+        }
+
+        .add-btn {
+            background: #3498db;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="root"></div>
+
+    <!-- scripts for react and react-dom -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+    <!-- DayJS Library for time -->
+    <script src="https://unpkg.com/dayjs/dayjs.min.js"></script>
+
+    <!-- script for BABEL -->
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+
+    <script type="text/babel">
+
+        function Notes() {
+
+            const [notesList, setNotesList] = React.useState(
+                [
+                    {
+                        noteText: 'I am the first note!',
+                        id: crypto.randomUUID(),
+                        date: dayjs().format("DD/MM/YYYY")
+                    },
+                    {
+                        noteText: 'I am the second note!',
+                        id: crypto.randomUUID(),
+                        date: dayjs().format("DD/MM/YYYY")
+                    },
+                    {
+                        noteText: 'I am the third note!',
+                        id: crypto.randomUUID(),
+                        date: dayjs().format("DD/MM/YYYY")
+                    }
+                ]);
+
+            const [inputText, setInputText] = React.useState('')
+
+
+            React.useEffect(() => {
+                const savedNotes = localStorage.getItem("notes")
+                if (savedNotes) {
+                    setNotesList(JSON.parse(savedNotes))
+                }
+            }, []) //dependency array is empty so it will be rendered once
+
+            React.useEffect(() => {
+                localStorage.setItem("notes", JSON.stringify(notesList))
+            }, [notesList])
+
+
+
+            function fetchInput(event) {
+                setInputText(event.target.value)
+            }
+
+            function addNewNote() {
+                if (inputText === "") {
+                    alert("Whoops, Empty note can't be added!")
+                } else {
+                    const newNote = {
+                        noteText: inputText,
+                        id: crypto.randomUUID(),
+                        date: dayjs().format("DD/MM/YYYY")
+                    }
+                    setNotesList([...notesList, newNote]);
+                    setInputText('');
+                }
+            }
+
+            const [editingId, setEditingId] = React.useState(null);
+            const [editingText, setEditingText] = React.useState('');
+
+
+            function editNote(id, noteText) {
+                setEditingId(id);
+                setEditingText(noteText);
+            }
+
+
+            function saveNote(id) {
+                setNotesList(notesList.map((note) => {
+                    if (note.id === id) {
+                        return {
+                            ...note,
+                            noteText: editingText
+                        };
+                    }
+                    return note;
+                }));
+                setEditingId(null);
+                setEditingText('');
+            }
+
+            function displayNotes() {
+                return notesList.map((note) => (
+                    <div key={note.id}>
+                        {note.id === editingId ? (
+                            <>
+                                <textarea
+                                    value={editingText}
+                                    onChange={(event) => setEditingText(event.target.value)}
+                                />
+                                <button className="save-btn" onClick={() => saveNote(note.id)}>Save</button>
+                            </>
+                        ) : (
+                            <span>{note.noteText}</span>
+                        )}
+
+                        <p>{note.date}</p>
+
+                        <button className="delete-btn" onClick={() => {
+                            deleteNote(note.id)
+                        }}>Delete</button>
+
+                        <button className="edit-btn" onClick={() => editNote(note.id, note.noteText)}>Edit</button>
+                    </div>
+                ));
+            }
+
+            function deleteNote(id) {
+                setNotesList(notesList.filter((note) => {
+                    return note.id != id
+                }))
+            }
+
+            return (
+                <>
+                    <div className="notes-container">
+                        {displayNotes()}
+                    </div>
+                    <div>
+                        <textarea onChange={fetchInput} name="notes" id="notes" value={inputText}></textarea>
+                        <button className="add-btn" onClick={addNewNote}>Add</button>
+                    </div>
+                </>
+            );
+        }
+
+        function App() {
+            return (
+                <Notes />
+            );
+        }
+
+        const container = document.querySelector('.root');
+        ReactDOM.createRoot(container).render(<App />);
+    </script>
+</body>
+
+</html>

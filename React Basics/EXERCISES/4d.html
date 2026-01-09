@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4-D</title>
+    <style>
+        body {
+            font-family: Arial;
+        }
+
+        .title {
+            font-size: 25px;
+        }
+
+        .login-input {
+            padding: 10px 15px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border-width: 1px;
+            width: 200px;
+        }
+
+        .login-button {
+            background-color: rgb(0, 123, 255);
+            color: white;
+            margin-right: 5px;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="js-container"></div>
+
+    <!-- scripts for react and react-dom -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+    <!-- script for BABEL -->
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+
+    <script type="text/babel">
+        function LoginForm() {
+            const [passwordType, setPasswordType] = React.useState("password")
+
+            function TogglePassword(){
+                if(passwordType === "password"){
+                    setPasswordType("text")
+                }else{
+                    setPasswordType("password")
+                }
+            }
+
+            return (
+                <>
+                    <div>
+                        <input
+                            placeholder="Email"
+                            className="login-input"
+                        />
+                    </div>
+                    <div>
+                        <input
+                            placeholder="Password"
+                            type={passwordType}
+                            className="login-input"
+                        />
+                        <button onClick={TogglePassword}>{passwordType === "password" ? "Show" : "Hide"}</button>
+                    </div>
+                    <button className="login-button">Login</button>
+                    <button className="login-button">Sign up</button>
+                </>
+            );
+        }
+
+        function App() {
+            return (
+                <>
+                    <p className="title">Hello, welcome to my website</p>
+                    <LoginForm />
+                </>
+            );
+        }
+
+        const container = document.querySelector('.js-container');
+        ReactDOM.createRoot(container).render(<App />);
+    </script>
+</body>
+
+</html>

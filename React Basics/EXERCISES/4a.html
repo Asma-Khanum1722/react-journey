@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4-A</title>
+    <style>
+        .btn-on{
+            background-color: rgb(25, 135, 84);
+            border: none;
+            font: 20px;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .btn-off{
+            background-color: red;
+            border: none;
+            font: 20px;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="js-container"></div>
+
+    <!-- scripts for react and react-dom -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+    <!-- script for BABEL -->
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+
+    <script type="text/babel">
+
+        function ToggleButton() {
+
+            const [isButtonON, setButtonOn] = React.useState(true);
+
+            function switchButton(){
+                if(isButtonON){
+                setButtonOn(false)
+                }else{
+                    setButtonOn(true)
+                }
+            }
+
+            return (
+                <button onClick={switchButton} className={isButtonON? 'btn-on':'btn-off'}>
+                    {isButtonON? 'ON':'OFF'}
+                </button>
+            );
+        }
+
+        function App(){
+            return( 
+                <ToggleButton/>
+            );
+        }
+
+        const container = document.querySelector('.js-container');
+        ReactDOM.createRoot(container).render(<App />);
+    </script>
+</body>
+
+</html>

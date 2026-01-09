@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM and State</title>
+</head>
+
+<body>
+    <div class="js-container"></div>
+
+    <!-- react and react-dom library -->
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+
+    <!-- babel library -->
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+
+    <script type="text/babel">
+       
+
+        function App() {
+            const [count, setCount] = React.useState(0);
+            const [brand, setBrand] = React.useState("Ford");
+            const [model, setModel] = React.useState("Mustang");
+            const [color, setColor] = React.useState("Black");
+            const [year, setYear] = React.useState("1969");
+
+            // arrays for car configuration
+            const colors = ["Red", "Green", "Blue", "Black", "White"];
+
+            const brands = ["Toyota", "Honda", "Ford", "BMW", "Tesla"];
+
+            const models = ["Corolla", "Civic", "Mustang", "X5", "Model 3"];
+
+            const years = ["2018", "2019", "2020", "2021", "2022", "2023"];
+                        
+            
+
+            return (
+                <>
+                    <p>I am count my value is {count}</p>
+                    <button onClick={() => {
+                        setCount(count + 1)
+                    }}>+1</button>
+
+                    <h1>My {brand}</h1>
+                    <p>It is {color} {model} from {year}</p>
+                    <div>
+                        <p><strong>Select Brand: </strong></p>
+                        {brands.map((b)=>{
+                            return(
+                                <button onClick={()=>{
+                                setBrand(b)
+                                }}>{b}</button>
+                            );
+                        })}
+                    </div>
+                    <div>
+                        <p><strong>Colors: </strong></p>
+                        {colors.map((c) => {
+                            return(
+                                <button onClick={()=>{
+                                setColor(c)
+                                }}>{c}</button>
+                            );
+                        })}
+                    </div>
+                    <div>
+                        <p><strong>Model: </strong></p>
+                        {models.map((m)=>{
+                            return(
+                                <button onClick={()=>{
+                                    setModel(m)
+                                }}>{m}</button>
+                            );
+                        })}
+                    </div>
+                    <div>
+                        <p><strong>Year: </strong></p>
+                        {years.map((y)=>{
+                            return(
+                                <button onClick={()=>{
+                                    setYear(y)
+                                }}>{y}</button>
+                            );
+                        })}
+                    </div>
+                </>
+
+            );
+        }
+
+        const container = document.querySelector('.js-container');
+        ReactDOM.createRoot(container).render(<App />)
+    </script>
+
+</body>
+
+</html>

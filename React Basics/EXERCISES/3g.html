@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3-G</title>
+</head>
+<body>
+    <div class="js-container"></div>
+
+  <!-- React + ReactDOM -->
+  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+  <!-- script for BABEL -->
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+
+    <script type="text/babel">
+        function InputName(){
+            const [inputText, setInputText] = React.useState('')
+
+
+            function handleInput(event){
+                (setInputText(event.target.value))
+            }
+
+            return(
+                <>
+                <input onChange={handleInput} type="text" placeholder="Type your name..." size="50"/>
+                <p>Hello {inputText}</p>
+                </>
+            );
+        }
+
+        function App(){
+            return(
+                <InputName/>
+            );
+        }
+
+        const container = document.querySelector('.js-container');
+    ReactDOM.createRoot(container).render(<App />);
+    </script>
+</body>
+</html>

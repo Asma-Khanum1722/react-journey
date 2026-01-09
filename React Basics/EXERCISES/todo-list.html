@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Todo List</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+      display: flex;
+      justify-content: center;
+      padding: 40px;
+    }
+
+    .todo-container {
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      width: 350px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    .input-group {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    input {
+      flex: 1;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      padding: 8px 12px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .add-btn {
+      background-color: #4CAF50;
+      color: white;
+    }
+
+    .delete-btn {
+      background-color: #e74c3c;
+      color: white;
+      margin-left: 10px;
+    }
+
+    .task {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 0;
+      border-bottom: 1px solid #eee;
+    }
+
+    .task:last-child {
+      border-bottom: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="root"></div>
+
+  <!-- scripts for react and react-dom -->
+  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+  <!-- script for BABEL -->
+  <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+
+  <script type="text/babel">
+
+    function AddTask() {
+      const [tasks, setTasks] = React.useState([
+        { id: crypto.randomUUID(), text: "complete homework" },
+        { id: crypto.randomUUID(), text: "Go for a walk" },
+        { id: crypto.randomUUID(), text: "watch movie" }
+      ]);
+
+      const [inputText, setInputText] = React.useState('');
+
+      function fetchInputTask(event) {
+        setInputText(event.target.value);
+      }
+
+      function addNewTask() {
+        if (inputText.trim() === "") return;
+        const newTask = { id: crypto.randomUUID(), text: inputText };
+        setTasks([...tasks, newTask]);
+        setInputText("");
+      }
+
+      function deleteTask(id) {
+        const updatedTasks = tasks.filter(function (task) {
+          if (task.id !== id) {
+            return true; // keep this task
+          } else {
+            return false; // remove this task
+          }
+        });
+        setTasks(updatedTasks);
+      }
+
+      return (
+        <div className="todo-container">
+          <h2>Todo List</h2>
+          <div className="input-group">
+            <input
+              type="text"
+              placeholder="What is today's task?"
+              onChange={fetchInputTask}
+              value={inputText}
+            />
+            <button className="add-btn" onClick={addNewTask}>Add</button>
+          </div>
+          <div>
+            {tasks.map((task) => (
+              <div className="task" key={task.id}>
+                <span>{task.text}</span>
+                <button className="delete-btn" onClick={() => deleteTask(task.id)}>Delete</button>
+              </div>
+            ))}
+          </div>
+        </div>
+      );
+    }
+
+    function App() {
+      return <AddTask />;
+    }
+
+    const container = document.querySelector('#root');
+    ReactDOM.createRoot(container).render(<App />);
+  </script>
+</body>
+
+</html>
