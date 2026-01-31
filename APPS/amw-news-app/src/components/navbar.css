@@ -12,16 +12,63 @@ nav {
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
+@media (max-width: 768px) {
+  nav {
+    padding: 15px 20px;
+    gap: 15px;
+    position: relative; /* relative for absolute menu */
+  }
+}
+
 .logo-img {
   width: 80px;
 }
 
-nav ul {
+.hamburger {
+  display: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #333;
+}
+
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+}
+
+.nav-links {
   display: flex;
   gap: 40px;
   list-style: none;
   margin: 0;
   padding: 0;
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    position: absolute;
+    top: 100%; /* Below nav */
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px 0;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transform: translateY(-150%); /* Hidden by default */
+    transition: transform 0.3s ease-in-out;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 99;
+  }
+
+  .nav-links.open {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
 }
 
 nav a {

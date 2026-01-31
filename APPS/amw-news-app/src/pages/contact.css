@@ -34,6 +34,23 @@
   flex-wrap: wrap;
 }
 
+@media (max-width: 768px) {
+  .contact-details {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .contact-card {
+    width: 100%;
+    min-width: unset;
+  }
+
+  .contact-heading {
+    font-size: 36px;
+  }
+}
+
 .contact-card {
   background: #fff;
   border-radius: 20px;

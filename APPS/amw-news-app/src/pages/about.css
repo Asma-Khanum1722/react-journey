@@ -37,6 +37,22 @@
   margin-bottom: 30px;
 }
 
+@media (max-width: 768px) {
+  .about-content {
+    padding: 20px;
+    width: 100%;
+  }
+
+  .about-heading {
+    font-size: 36px;
+  }
+
+  .about-sub {
+    font-size: 16px;
+    margin-bottom: 30px;
+  }
+}
+
 .about-content h2 {
   font-size: 24px;
   margin-bottom: 12px;

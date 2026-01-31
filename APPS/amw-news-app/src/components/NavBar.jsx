@@ -1,12 +1,22 @@
+import { useState } from "react";
 import { NavLink } from "react-router-dom";
 
 const NavBar = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
     <nav>
       <div>
         <img className="logo-img" src="../src/assets/file.png" alt="logo" />
       </div>
-      <ul>
+      <div className="hamburger" onClick={toggleMenu}>
+        <i className={isOpen ? "fa-solid fa-xmark" : "fa-solid fa-bars"}></i>
+      </div>
+      <ul className={isOpen ? "nav-links open" : "nav-links"}>
         <li>
           <NavLink
             to="/"
