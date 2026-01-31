@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "../components/hero.css";
 
 const Hero = () => {
@@ -19,9 +20,9 @@ const Hero = () => {
           platform. <br />
           Join the conversation today!
         </p>
-        <a className="amw-btn join-link" href="#contact">
+        <Link className="amw-btn join-link" to="/login">
           Join
-        </a>
+        </Link>
         <p className="para2">
           <span className="star-icons">
             <i className="bi bi-star-fill"></i>
