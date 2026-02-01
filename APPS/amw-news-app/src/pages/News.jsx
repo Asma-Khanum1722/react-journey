@@ -23,7 +23,7 @@ const News = () => {
     return localStorage.getItem("amw_country_pref") || "us";
   });
 
-  const apiKey = "4590098cb6d6ab429bc237c46e15679d";
+  const apiKey = import.meta.env.VITE_GNEWS_API_KEY;
   const category = "general";
   const language = "en";
   const CACHE_DURATION = 16 * 60 * 1000;

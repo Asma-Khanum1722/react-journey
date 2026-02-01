@@ -22,7 +22,7 @@ function App() {
   const [myList, setMyList] = useState([]);
   const gridRef = useRef(null);
   
-  const TMDB_KEY = "0cb857ec341eb2f27fa94ee2740804f7";
+  const TMDB_KEY = import.meta.env.VITE_TMDB_API_KEY;
 
   useEffect(() => {
     const savedHistory = localStorage.getItem("cinevault_history");

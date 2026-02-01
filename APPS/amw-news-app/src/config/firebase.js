@@ -3,13 +3,13 @@ import { getAuth, GoogleAuthProvider } from 'firebase/auth';
 
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDHgQwBo9ory0fHN-SgYEuV0ldR2qLFeYs",
-  authDomain: "amw-news-app.firebaseapp.com",
-  projectId: "amw-news-app",
-  storageBucket: "amw-news-app.firebasestorage.app",
-  messagingSenderId: "979981298217",
-  appId: "1:979981298217:web:61293501bca5e6e7edca38",
-  measurementId: "G-89CNV75VBQ"
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
+  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID
 };
 
 const app = initializeApp(firebaseConfig);
