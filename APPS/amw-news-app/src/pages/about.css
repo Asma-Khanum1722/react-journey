@@ -138,10 +138,35 @@
 
 @media (max-width: 768px) {
   .about-section {
-    padding: 80px 20px;
+    padding: 60px 20px;
+  }
+  
+  .about-title {
+    font-size: 28px;
+  }
+  
+  .about-intro {
+    font-size: 14px;
+  }
+  
+  .about-grid {
+    gap: 16px;
+  }
+  
+  .about-card {
+    padding: 28px 24px;
   }
   
   .team-list {
-    gap: 40px;
+    gap: 32px;
+    flex-direction: column;
+  }
+  
+  .team-quote {
+    font-size: 13px;
+  }
+  
+  .member-name {
+    font-size: 15px;
   }
 }

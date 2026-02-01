@@ -315,3 +315,57 @@
 .card-link:hover svg {
   transform: translateX(4px);
 }
+
+/* ===== MOBILE RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .news-header {
+    padding: 120px 20px 60px;
+  }
+  
+  .news-title {
+    font-size: 32px;
+  }
+  
+  .news-subtitle {
+    font-size: 14px;
+  }
+  
+  .news-controls {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 30px 20px;
+  }
+  
+  .country-selector {
+    min-width: 100%;
+  }
+  
+  .btn-refresh {
+    justify-content: center;
+  }
+  
+  .news-grid {
+    grid-template-columns: 1fr;
+    padding: 20px 16px;
+    gap: 48px;
+  }
+  
+  .card-image-wrapper {
+    height: 240px;
+  }
+  
+  .card-headline {
+    font-size: 18px;
+    padding: 0 16px;
+  }
+  
+  .card-body {
+    width: 92%;
+    padding: 24px 20px;
+    margin-top: -32px;
+  }
+  
+  .card-desc {
+    font-size: 13px;
+  }
+}

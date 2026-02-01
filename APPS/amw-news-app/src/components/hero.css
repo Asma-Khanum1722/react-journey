@@ -291,3 +291,88 @@
   line-height: 1.7;
   margin: 0;
 }
+
+/* ===== MOBILE RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .hero-content {
+    padding: 120px 20px 60px;
+  }
+  
+  .hero-overline {
+    gap: 12px;
+  }
+  
+  .overline-bar {
+    width: 24px;
+  }
+  
+  .overline-text {
+    font-size: 10px;
+    letter-spacing: 2px;
+  }
+  
+  .hero-description {
+    font-size: 14px;
+    padding: 0 12px;
+  }
+  
+  .hero-cta {
+    flex-direction: column;
+    width: 100%;
+    max-width: 280px;
+    margin-bottom: 48px;
+  }
+  
+  .btn-primary,
+  .btn-secondary {
+    width: 100%;
+    justify-content: center;
+    padding: 16px 24px;
+  }
+  
+  .hero-metrics {
+    gap: 24px;
+  }
+  
+  .metric-value {
+    font-size: 22px;
+  }
+  
+  .metric-label {
+    font-size: 10px;
+  }
+  
+  /* Features */
+  .features-section {
+    padding: 60px 20px;
+  }
+  
+  .features-header {
+    margin-bottom: 40px;
+  }
+  
+  .section-title {
+    font-size: 28px;
+  }
+  
+  .features-grid {
+    gap: 16px;
+  }
+  
+  .feature-card {
+    padding: 32px 24px;
+  }
+  
+  .feature-number {
+    font-size: 36px;
+    margin-bottom: 16px;
+  }
+  
+  .feature-card h3 {
+    font-size: 18px;
+  }
+  
+  .feature-card p {
+    font-size: 13px;
+  }
+}

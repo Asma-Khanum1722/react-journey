@@ -140,6 +140,31 @@
 
 @media (max-width: 768px) {
   .contact-section {
-    padding: 80px 20px;
+    padding: 60px 20px;
+  }
+  
+  .contact-title {
+    font-size: 28px;
+  }
+  
+  .contact-intro {
+    font-size: 14px;
+  }
+  
+  .contact-grid {
+    gap: 16px;
+  }
+  
+  .contact-card {
+    padding: 24px 20px;
+  }
+  
+  .social-links {
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .social-link {
+    font-size: 12px;
   }
 }
