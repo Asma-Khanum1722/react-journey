@@ -57,8 +57,9 @@
 
 .overline-bar {
   width: 40px;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, #00bcd4);
+  height: 2px;
+  background: linear-gradient(90deg, #f59e0b, #fbbf24);
+  border-radius: 2px;
 }
 
 .overline-bar:last-child {
@@ -107,6 +108,8 @@
 /* CTA Buttons */
 .hero-cta {
   display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
   gap: 16px;
   margin-bottom: 64px;
 }
@@ -114,8 +117,12 @@
 .btn-primary {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 12px;
-  padding: 18px 36px;
+  padding: 0 36px;
+  height: 56px;
+  min-height: 56px;
+  box-sizing: border-box;
   background: #00bcd4;
   color: #000;
   font-family: "Montserrat", sans-serif;
@@ -123,6 +130,7 @@
   font-weight: 600;
   letter-spacing: 0.5px;
   text-decoration: none;
+  border: 1px solid transparent;
   border-radius: 4px;
   transition: all 0.3s ease;
 }
@@ -144,22 +152,29 @@
 .btn-secondary {
   display: inline-flex;
   align-items: center;
-  padding: 18px 36px;
+  justify-content: center;
+  gap: 8px;
+  padding: 0 36px;
+  height: 56px;
+  min-height: 56px;
+  box-sizing: border-box;
   background: transparent;
-  color: #fff;
+  color: rgba(255,255,255,0.7);
   font-family: "Montserrat", sans-serif;
   font-size: 14px;
   font-weight: 500;
   letter-spacing: 0.5px;
   text-decoration: none;
-  border: 1px solid rgba(255,255,255,0.2);
+  border: 1px solid rgba(255,255,255,0.25);
   border-radius: 4px;
   transition: all 0.3s ease;
+  white-space: nowrap;
 }
 
 .btn-secondary:hover {
-  background: rgba(255,255,255,0.05);
-  border-color: rgba(255,255,255,0.4);
+  background: rgba(255,255,255,0.1);
+  border-color: rgba(255,255,255,0.5);
+  color: #fff;
 }
 
 /* Metrics */

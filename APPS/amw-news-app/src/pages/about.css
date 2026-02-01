@@ -1,6 +1,6 @@
 /* ===== ABOUT SECTION ===== */
 .about-section {
-  background: #f8f8f8;
+  background: linear-gradient(180deg, #fffbf5 0%, #fff8f0 100%);
   padding: 120px 24px;
 }
 
@@ -59,6 +59,8 @@
 }
 
 .about-card:hover {
+  background: rgba(0,0,0,0.02);
+  border-color: rgba(245, 158, 11, 0.4);
   box-shadow: 0 20px 60px rgba(0,0,0,0.08);
   transform: translateY(-4px);
 }

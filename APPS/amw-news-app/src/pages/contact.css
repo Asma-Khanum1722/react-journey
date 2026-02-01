@@ -51,7 +51,8 @@
 
 .contact-card:hover {
   background: rgba(255,255,255,0.04);
-  border-color: rgba(0,188,212,0.3);
+  border-color: rgba(245, 158, 11, 0.4);
+  transform: translateY(-4px);
 }
 
 .contact-card-label {

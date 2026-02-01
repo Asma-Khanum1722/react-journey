@@ -35,9 +35,7 @@ const Hero = () => {
                 <path d="M5 12h14M12 5l7 7-7 7"/>
               </svg>
             </Link>
-            <Link className="btn-secondary" to="/login">
-              Get Started
-            </Link>
+           
           </div>
           <div className="hero-metrics">
             <div className="metric">
