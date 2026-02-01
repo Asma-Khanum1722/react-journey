@@ -1,73 +1,178 @@
-.container{
-    width: 420px;
-    margin: auto;
-    margin-top: 20px;
-    background-color: white;
-    color: #262626;
-    display: flex;
-    flex-direction: column;
-    gap: 5px ;
+/* ===== QUIZ CONTAINER ===== */
+.container {
+  width: 100%;
+  max-width: 500px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  border-radius: 24px;
+  padding: 48px;
+  box-shadow: 
+    0 25px 50px -12px rgba(0, 0, 0, 0.25),
+    0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+/* ===== HEADER ===== */
+.container h2 {
+  font-size: 14px;
+  font-weight: 600;
+  color: #667eea;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin: 0 0 8px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.container h2::after {
+  content: '';
+  flex: 1;
+  height: 2px;
+  background: linear-gradient(90deg, #667eea, transparent);
+  margin-left: 16px;
+  border-radius: 2px;
+}
+
+.container hr {
+  display: none;
+}
+
+/* ===== QUESTION ===== */
+.container h3 {
+  font-size: 22px;
+  font-weight: 600;
+  color: #1a1a2e;
+  line-height: 1.5;
+  margin: 24px 0 32px 0;
+}
+
+/* ===== OPTIONS ===== */
+.container ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.container ul li {
+  display: flex;
+  align-items: center;
+  padding: 18px 24px;
+  background: linear-gradient(135deg, #f8f9ff 0%, #f0f2ff 100%);
+  border: 2px solid transparent;
+  border-radius: 12px;
+  margin-bottom: 12px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #333;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.container ul li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(180deg, #667eea, #764ba2);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.container ul li:hover {
+  border-color: #667eea;
+  transform: translateX(8px);
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.15);
+}
+
+.container ul li:hover::before {
+  opacity: 1;
+}
+
+/* ===== CORRECT/WRONG STATES ===== */
+.correct-green {
+  background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%) !important;
+  border-color: #28a745 !important;
+  color: #155724 !important;
+}
+
+.correct-green::before {
+  background: #28a745 !important;
+  opacity: 1 !important;
+}
+
+.wrong-red {
+  background: linear-gradient(135deg, #f8d7da 0%, #f5c6cb 100%) !important;
+  border-color: #dc3545 !important;
+  color: #721c24 !important;
+}
+
+.wrong-red::before {
+  background: #dc3545 !important;
+  opacity: 1 !important;
+}
+
+/* ===== BUTTON ===== */
+.container button {
+  display: block;
+  width: 100%;
+  padding: 18px 32px;
+  margin-top: 24px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+}
+
+.container button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 35px rgba(102, 126, 234, 0.4);
+}
+
+.container button:disabled {
+  background: linear-gradient(135deg, #ccc 0%, #999 100%);
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* ===== PROGRESS INDICATOR ===== */
+.container .index {
+  text-align: center;
+  margin-top: 24px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #888;
+  letter-spacing: 1px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 540px) {
+  .container {
+    padding: 32px 24px;
     border-radius: 20px;
-    padding: 40px 50px;
-}
-
-.container hr{
-    height: 2px;
-    width: 420px;
-    background-color: #262626;
-    border: none;
-}
-
-.container h2{
-    font-size: 25px;
-    font-weight: 500;
-    margin: 0;
-}
-
-.container h3{
-    margin-top: 10px;
-    margin-bottom: 0;
-}
-
-.container ul{
-   padding-left: 0px;
-}
-
-.container ul li{
-    list-style: none;
-    display: flex;
-    align-items: center;
-    height: 50px;
-    padding-left: 15px;
-    border: 1px solid #686868;
-    border-radius: 8px;
-    margin-bottom: 10px;
-    font-size: 20px;
-    cursor: pointer;
-}
-
-.container button{
-    margin: auto;
-    width: 150px;
-    height: 45px;
-    color: white;
-    font-size: 20px;
-    font-weight: 500;
-    background-color: #553f9a;
-    cursor: pointer;
-    border-radius: 8px;
-}
-
-.container .index{
-    margin: auto;
+  }
+  
+  .container h3 {
+    font-size: 18px;
+  }
+  
+  .container ul li {
+    padding: 14px 18px;
+    font-size: 14px;
+  }
+  
+  .container button {
+    padding: 16px 24px;
     font-size: 15px;
-    padding-top: 10px;
-}
-
-.correct-green{
-    background-color: rgb(151, 192, 90);
-}
-
-.wrong-red{
-    background-color: rgb(255, 104, 104);
+  }
 }
