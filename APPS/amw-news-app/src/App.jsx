@@ -2,10 +2,9 @@ import './App.css'
 import './components/navbar.css'
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
 import NavBar from './components/NavBar'
+import Footer from './components/Footer'
 import News from './pages/News'
-import About from './pages/About'
 import Login from './pages/Login'
-import Contact from './pages/Contact'
 import Home from './pages/Home'
 
 function App() {
@@ -13,23 +12,15 @@ function App() {
 const router = createBrowserRouter([
   {
     path:'/',
-    element: <><NavBar/><Home/></>
+    element: <><NavBar/><Home/><Footer/></>
   },
   {
     path:'/news',
-    element: <><NavBar/><News/></>
-  },
-  {
-    path:'/about',
-    element: <><NavBar/><About/></>
+    element: <><NavBar/><News/><Footer/></>
   },
   {
     path:'/login',
-    element: <><NavBar/><Login/></>
-  },
-  {
-    path:'/contact',
-    element: <><NavBar/><Contact/></>
+    element: <><NavBar/><Login/><Footer/></>
   }
 ])
 

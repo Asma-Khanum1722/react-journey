@@ -1,11 +1,34 @@
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate, useLocation } from "react-router-dom";
 
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
+  };
+
+  const scrollToSection = (sectionId) => {
+    setIsOpen(false);
+    
+    if (location.pathname !== "/") {
+      // Navigate to home first, then scroll
+      navigate("/");
+      setTimeout(() => {
+        const element = document.getElementById(sectionId);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 100);
+    } else {
+      // Already on home, just scroll
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    }
   };
 
   return (
@@ -21,6 +44,7 @@ const NavBar = () => {
           <NavLink
             to="/"
             className={({ isActive }) => (isActive ? "active-element" : "")}
+            onClick={() => setIsOpen(false)}
           >
             Home
           </NavLink>
@@ -29,33 +53,37 @@ const NavBar = () => {
           <NavLink
             to="/news"
             className={({ isActive }) => (isActive ? "active-element" : "")}
+            onClick={() => setIsOpen(false)}
           >
             News
           </NavLink>
         </li>
         <li>
-          <NavLink
-            to="/about"
-            className={({ isActive }) => (isActive ? "active-element" : "")}
+          <a 
+            href="#about" 
+            onClick={(e) => { e.preventDefault(); scrollToSection("about"); }}
+            className="nav-scroll-link"
           >
             About Us
-          </NavLink>
+          </a>
         </li>
         <li>
           <NavLink
             to="/login"
             className={({ isActive }) => (isActive ? "active-element" : "")}
+            onClick={() => setIsOpen(false)}
           >
             Login
           </NavLink>
         </li>
         <li>
-          <NavLink
-            to="/contact"
-            className={({ isActive }) => (isActive ? "active-element" : "")}
+          <a 
+            href="#contact" 
+            onClick={(e) => { e.preventDefault(); scrollToSection("contact"); }}
+            className="nav-scroll-link"
           >
             Contact
-          </NavLink>
+          </a>
         </li>
       </ul>
     </nav>
